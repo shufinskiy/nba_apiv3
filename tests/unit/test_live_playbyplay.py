@@ -1,8 +1,8 @@
 import json
 import pytest
-from nba_api.library.http import NBAHTTP, NBAResponse
-from nba_api.live.nba.endpoints import playbyplay
-from nba_api.live.nba.library.http import NBALiveHTTP
+from nba_apiv3.library.http import NBAHTTP, NBAResponse
+from nba_apiv3.live.nba.endpoints import playbyplay
+from nba_apiv3.live.nba.library.http import NBALiveHTTP
 
 content = {'meta': {'version': 1, 'code': 200, 'request': 'http://nba.cloud/games/0022000180/playbyplay?Format=json', 'time': '2021-01-15 23:48:58.906160'}, 'game': {'gameId': '0022000180', 'actions': [{'actionNumber': 4, 'clock': 'PT11M58.00S', 'timeActual': '2021-01-16T00:40:31.3Z', 'period': 1, 'periodType': 'REGULAR', 'teamId': 1610612738, 'teamTricode': 'BOS', 'actionType': 'jumpball', 'subType': 'recovered', 'descriptor': 'startperiod', 'qualifiers': [], 'personId': 1629684, 'x': None, 'y': None, 'possession': 1610612738, 'scoreHome': '0', 'scoreAway': '0', 'edited': '2021-01-16T00:40:31Z', 'orderNumber': 40000, 'xLegacy': None, 'yLegacy': None, 'isFieldGoal': 0, 'jumpBallRecoveredName': 'G. Williams', 'jumpBallRecoverdPersonId': 1629684, 'side': None, 'playerName': 'Williams', 'playerNameI': 'G. Williams', 'personIdsFilter': [1629684, 202684, 202696], 'jumpBallWonPlayerName': 'Thompson', 'jumpBallWonPersonId': 202684, 'description': 'Jump Ball T. Thompson vs. N. Vucevic: Tip to G. Williams', 'jumpBallLostPlayerName': 'Vucevic', 'jumpBallLostPersonId': 202696}]}}
 actions = [{'actionNumber': 4, 'clock': 'PT11M58.00S', 'timeActual': '2021-01-16T00:40:31.3Z', 'period': 1, 'periodType': 'REGULAR', 'teamId': 1610612738, 'teamTricode': 'BOS', 'actionType': 'jumpball', 'subType': 'recovered', 'descriptor': 'startperiod', 'qualifiers': [], 'personId': 1629684, 'x': None, 'y': None, 'possession': 1610612738, 'scoreHome': '0', 'scoreAway': '0', 'edited': '2021-01-16T00:40:31Z', 'orderNumber': 40000, 'xLegacy': None, 'yLegacy': None, 'isFieldGoal': 0, 'jumpBallRecoveredName': 'G. Williams', 'jumpBallRecoverdPersonId': 1629684, 'side': None, 'playerName': 'Williams', 'playerNameI': 'G. Williams', 'personIdsFilter': [1629684, 202684, 202696], 'jumpBallWonPlayerName': 'Thompson', 'jumpBallWonPersonId': 202684, 'description': 'Jump Ball T. Thompson vs. N. Vucevic: Tip to G. Williams', 'jumpBallLostPlayerName': 'Vucevic', 'jumpBallLostPersonId': 202696}]

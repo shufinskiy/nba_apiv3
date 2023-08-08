@@ -1,5 +1,5 @@
 import pytest
-from nba_api.stats.library.playbyplayregex import *
+from nba_apiv3.stats.library.playbyplayregex import *
 from data_playbyplayregex import playbyplay
 
 

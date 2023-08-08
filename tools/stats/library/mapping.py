@@ -1,4 +1,4 @@
-from nba_api.stats.library.parameters import *
+from nba_apiv3.stats.library.parameters import *
 
 endpoint_list = [
     '2AssistTracker',

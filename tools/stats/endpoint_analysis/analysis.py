@@ -3,8 +3,8 @@ import json
 import threading
 import time
 
-from nba_api.stats.library.http import NBAStatsHTTP
-from nba_api.stats.library.parameters import *
+from nba_apiv3.stats.library.http import NBAStatsHTTP
+from nba_apiv3.stats.library.parameters import *
 
 from datetime import datetime
 

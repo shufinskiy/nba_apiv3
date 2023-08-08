@@ -4,7 +4,7 @@ import inspect
 from .template import header_template, regex_pattern_body_template, regex_pattern_line_template
 from .template import variable_body_template, variable_line_template
 
-from nba_api.stats.library import parameters
+from nba_apiv3.stats.library import parameters
 from tools.library.file_handler import save_file, get_file_path
 from tools.stats.library.mapping import parameter_map, parameter_variations
 

@@ -11,11 +11,10 @@ Once you call the class, the request will be sent and the information will be st
 As of v1.1.0, we now support custom proxy, header, and timeout settings on every request.
 
 ```python
-from nba_api.stats.endpoints import commonplayerinfo
+from nba_apiv3.stats.endpoints import commonplayerinfo
 
 # Basic Request
 player_info = commonplayerinfo.CommonPlayerInfo(player_id=2544)
-
 
 custom_headers = {
     'Host': 'stats.nba.com',
@@ -30,7 +29,8 @@ custom_headers = {
 
 # Only available after v1.1.0
 # Proxy Support, Custom Headers Support, Timeout Support (in seconds)
-player_info = commonplayerinfo.CommonPlayerInfo(player_id=2544, proxy='127.0.0.1:80', headers=custom_headers, timeout=100)
+player_info = commonplayerinfo.CommonPlayerInfo(player_id=2544, proxy='127.0.0.1:80', headers=custom_headers,
+                                                timeout=100)
 ```
 
 `player_info` can now be used to access different information that was returned by the request. [`CommonPlayerInfo`](endpoints/commonplayerinfo.md) contains the following data sets that are stored as a [`DataSet`](endpoints_data_structure.md).
@@ -95,7 +95,7 @@ lebron_james = {
 All three of these searches will return a list of players.
 
 ```python
-from nba_api.stats.static import players
+from nba_apiv3.stats.static import players
 
 # Find players by full name.
 players.find_players_by_full_name('james')
@@ -118,7 +118,7 @@ In addition, you can find players by ID by using `find_player_by_id()`. `get_act
 You can also find teams using regex patterns on fields such as full name, state, city, and nickname. As well as finding teams by year founded, abbreviation, and id.
 
 ```python
-from nba_api.stats.static import teams
+from nba_apiv3.stats.static import teams
 
 # Find teams by full name.
 teams.find_teams_by_full_name('cav')

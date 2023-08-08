@@ -1,10 +1,11 @@
-file_template = '''from nba_apiv3.stats.endpoints._base import Endpoint
-from nba_apiv3.stats.library.http import NBAStatsHTTP{imports}
+from nba_apiv3.stats.endpoints._base import Endpoint
+from nba_apiv3.stats.library.http import NBAStatsHTTP
+from nba_apiv3.stats.library.parameters import EndPeriod, StartPeriod
 
 
-class {endpoint}(Endpoint):
-    endpoint = '{endpoint_lowercase}'
-    expected_data = {data_sets}
+class PlayByPlay(Endpoint):
+    endpoint = 'playbyplay'
+    expected_data = {'AvailableVideo': ['VIDEO_AVAILABLE_FLAG'], 'PlayByPlay': ['GAME_ID', 'EVENTNUM', 'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE', 'PERIOD', 'WCTIMESTRING', 'PCTIMESTRING', 'HOMEDESCRIPTION', 'NEUTRALDESCRIPTION', 'VISITORDESCRIPTION', 'SCORE', 'SCOREMARGIN']}
 
     nba_response = None
     data_sets = None
@@ -13,7 +14,9 @@ class {endpoint}(Endpoint):
     headers = None
 
     def __init__(self,
-{arguments},
+                 game_id,
+                 end_period=EndPeriod.default,
+                 start_period=StartPeriod.default,
                  proxy=None,
                  headers=None,
                  timeout=30,
@@ -22,9 +25,11 @@ class {endpoint}(Endpoint):
         if headers is not None:
             self.headers = headers
         self.timeout = timeout
-        self.parameters = {{
-{parameters}
-        }}
+        self.parameters = {
+                'GameID': game_id,
+                'EndPeriod': end_period,
+                'StartPeriod': start_period
+        }
         if get_request:
             self.get_request()
     
@@ -41,18 +46,5 @@ class {endpoint}(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets()
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-{data_set_variables}
-'''
-
-data_set_template = '''        self.{variable_name} = Endpoint.DataSet(data=data_sets['{key_name}'])'''
-
-imports_template = '''\nfrom nba_apiv3.stats.library.parameters import {imports_list}'''
-
-function_template = '''    def {function_name}(self):
-        return self.get_normalized_dict()['{data_header}']
-'''
-
-parameter_template = '''                '{nba_parameter}': {python_variable}'''
-
-argument_template = '''                 {python_variable}={default_value}'''
-no_default_argument_template = '''                 {python_variable}'''
+        self.available_video = Endpoint.DataSet(data=data_sets['AvailableVideo'])
+        self.play_by_play = Endpoint.DataSet(data=data_sets['PlayByPlay'])

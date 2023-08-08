@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from nba_api.stats.endpoints.commonallplayers import CommonAllPlayers
+from nba_apiv3.stats.endpoints.commonallplayers import CommonAllPlayers
 from template import file_template, player_row_template
 
 player_adjustments = {

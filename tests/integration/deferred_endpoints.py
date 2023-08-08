@@ -1,4 +1,4 @@
-import nba_api.stats.endpoints as ep
+import nba_apiv3.stats.endpoints as ep
 
 
 class DeferredEndpoint:

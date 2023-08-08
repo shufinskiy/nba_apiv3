@@ -15,16 +15,16 @@
 `nba_api` requires Python 3.7+ along with the `requests` and `numpy` packages. While `pandas` is not required, it is required to work with Pandas DataFrames.
 
 ```bash
-pip install nba_api
+pip install nba_apiv3
 ```
 
 ## NBA Official Stats
 
 ```python
-from nba_api.stats.endpoints import playercareerstats
+from nba_apiv3.stats.endpoints import playercareerstats
 
 # Nikola Jokić
-career = playercareerstats.PlayerCareerStats(player_id='203999') 
+career = playercareerstats.PlayerCareerStats(player_id='203999')
 
 # pandas data frames (optional: pip install pandas)
 career.get_data_frames()[0]
@@ -39,7 +39,7 @@ career.get_dict()
 ## NBA Live Data
 
 ```python
-from nba_api.live.nba.endpoints import scoreboard
+from nba_apiv3.live.nba.endpoints import scoreboard
 
 # Today's Score Board
 games = scoreboard.ScoreBoard()

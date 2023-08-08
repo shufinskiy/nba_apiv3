@@ -1,4 +1,4 @@
-from nba_api.stats.static import teams
+from nba_apiv3.stats.static import teams
 
 
 def test_get_request_url():
