@@ -5,7 +5,7 @@ from nba_apiv3.stats.library.parameters import EndPeriod, EndRange, RangeType, S
 
 class BoxScoreMiscV3(Endpoint):
     endpoint = 'boxscoremiscv3'
-    expected_data = {'sqlPlayersMisc': ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MIN', 'PTS_OFF_TOV', 'PTS_2ND_CHANCE', 'PTS_FB', 'PTS_PAINT', 'OPP_PTS_OFF_TOV', 'OPP_PTS_2ND_CHANCE', 'OPP_PTS_FB', 'OPP_PTS_PAINT', 'BLK', 'BLKA', 'PF', 'PFD'], 'sqlTeamsMisc': ['GAME_ID', 'TEAM_ID', 'TEAM_NAME', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'MIN', 'PTS_OFF_TOV', 'PTS_2ND_CHANCE', 'PTS_FB', 'PTS_PAINT', 'OPP_PTS_OFF_TOV', 'OPP_PTS_2ND_CHANCE', 'OPP_PTS_FB', 'OPP_PTS_PAINT', 'BLK', 'BLKA', 'PF', 'PFD']}
+    expected_data = {'PlayerStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personId', 'firstName', 'familyName', 'nameI', 'playerSlug', 'position', 'comment', 'jerseyNum', 'minutes', 'pointsOffTurnovers', 'pointsSecondChance', 'pointsFastBreak', 'pointsPaint', 'oppPointsOffTurnovers', 'oppPointsSecondChance', 'oppPointsFastBreak', 'oppPointsPaint', 'blocks', 'blocksAgainst', 'foulsPersonal', 'foulsDrawn'], 'TeamStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'minutes', 'pointsOffTurnovers', 'pointsSecondChance', 'pointsFastBreak', 'pointsPaint', 'oppPointsOffTurnovers', 'oppPointsSecondChance', 'oppPointsFastBreak', 'oppPointsPaint', 'blocks', 'blocksAgainst', 'foulsPersonal', 'foulsDrawn']}
 
     nba_response = None
     data_sets = None
@@ -52,5 +52,5 @@ class BoxScoreMiscV3(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets(self.endpoint)
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-        self.sql_players_misc = Endpoint.DataSet(data=data_sets['PlayerStats'])
-        self.sql_teams_misc = Endpoint.DataSet(data=data_sets['TeamStats'])
+        self.player_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+        self.team_stats = Endpoint.DataSet(data=data_sets['TeamStats'])

@@ -4,7 +4,7 @@ from nba_apiv3.stats.library.http import NBAStatsHTTP
 
 class BoxScoreDefensiveV2(Endpoint):
     endpoint = 'boxscoredefensivev2'
-    expected_data = {'PlayerDefensiveStats': ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'TEAM_NICKNAME', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MATCHUP_MIN', 'PARTIAL_POSS', 'SWITCHES_ON', 'PLAYER_PTS', 'DREB', 'MATCHUP_AST', 'MATCHUP_TOV', 'STL', 'BLK', 'MATCHUP_FGM', 'MATCHUP_FGA', 'MATCHUP_FG_PCT', 'MATCHUP_FG3M', 'MATCHUP_FG3A', 'MATCHUP_FG3_PCT'], 'Table1': [':1']}
+    expected_data = {'PlayerStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personId', 'firstName', 'familyName', 'nameI', 'playerSlug', 'position', 'comment', 'jerseyNum', 'matchupMinutes', 'partialPossessions', 'switchesOn', 'playerPoints', 'defensiveRebounds', 'matchupAssists', 'matchupTurnovers', 'steals', 'blocks', 'matchupFieldGoalsMade', 'matchupFieldGoalsAttempted', 'matchupFieldGoalPercentage', 'matchupThreePointersMade', 'matchupThreePointersAttempted', 'matchupThreePointerPercentage'], 'TeamStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'minutes']}
 
     nba_response = None
     data_sets = None
@@ -41,5 +41,5 @@ class BoxScoreDefensiveV2(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets(self.endpoint)
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-        self.player_defensive_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
-        self.table1 = Endpoint.DataSet(data=data_sets['TeamStats'])
+        self.player_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+        self.team_stats = Endpoint.DataSet(data=data_sets['TeamStats'])

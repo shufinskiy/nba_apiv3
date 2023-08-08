@@ -4,7 +4,7 @@ from nba_apiv3.stats.library.http import NBAStatsHTTP
 
 class BoxScoreMatchupsV3(Endpoint):
     endpoint = 'boxscorematchupsv3'
-    expected_data = {'PlayerMatchupsStats': ['GAME_ID', 'OFF_TEAM_ID', 'OFF_TEAM_ABBREVIATION', 'OFF_TEAM_CITY', 'OFF_TEAM_NICKNAME', 'OFF_PLAYER_ID', 'OFF_PLAYER_NAME', 'DEF_TEAM_ID', 'DEF_TEAM_ABBREVIATION', 'DEF_TEAM_CITY', 'DEF_TEAM_NICKNAME', 'DEF_PLAYER_ID', 'DEF_PLAYER_NAME', 'MATCHUP_MIN', 'PARTIAL_POSS', 'PCT_DEFENDER_TOTAL_TIME', 'PCT_OFF_TOTAL_TIME', 'PCT_TOTAL_TIME_BOTH_ON', 'SWITCHES_ON', 'PLAYER_PTS', 'TEAM_PTS', 'MATCHUP_AST', 'MATCHUP_POTENTIAL_AST', 'MATCHUP_TOV', 'MATCHUP_BLK', 'MATCHUP_FGM', 'MATCHUP_FGA', 'MATCHUP_FG_PCT', 'MATCHUP_FG3M', 'MATCHUP_FG3A', 'MATCHUP_FG3_PCT', 'HELP_BLK', 'HELP_FGM', 'HELP_FGA', 'HELP_FG_PERC', 'MATCHUP_FTM', 'MATCHUP_FTA', 'SFL']}
+    expected_data = {'PlayerStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personIdDef', 'firstNameDef', 'familyNameDef', 'nameIDef', 'playerSlugDef', 'positionDef', 'commentDef', 'jerseyNumDef', 'personIdOff', 'firstNameOff', 'familyNameOff', 'nameIOff', 'playerSlugOff', 'jerseyNumOff', 'matchupMinutes', 'matchupMinutesSort', 'partialPossessions', 'percentageDefenderTotalTime', 'percentageOffensiveTotalTime', 'percentageTotalTimeBothOn', 'switchesOn', 'playerPoints', 'teamPoints', 'matchupAssists', 'matchupPotentialAssists', 'matchupTurnovers', 'matchupBlocks', 'matchupFieldGoalsMade', 'matchupFieldGoalsAttempted', 'matchupFieldGoalsPercentage', 'matchupThreePointersMade', 'matchupThreePointersAttempted', 'matchupThreePointersPercentage', 'helpBlocks', 'helpFieldGoalsMade', 'helpFieldGoalsAttempted', 'helpFieldGoalsPercentage', 'matchupFreeThrowsMade', 'matchupFreeThrowsAttempted', 'shootingFouls']}
 
     nba_response = None
     data_sets = None
@@ -41,4 +41,5 @@ class BoxScoreMatchupsV3(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets(self.endpoint)
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-        self.player_matchups_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+        self.player_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+

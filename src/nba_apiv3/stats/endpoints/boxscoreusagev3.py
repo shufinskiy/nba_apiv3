@@ -5,7 +5,7 @@ from nba_apiv3.stats.library.parameters import EndPeriod, EndRange, RangeType, S
 
 class BoxScoreUsageV3(Endpoint):
     endpoint = 'boxscoreusagev3'
-    expected_data = {'sqlPlayersUsage': ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MIN', 'USG_PCT', 'PCT_FGM', 'PCT_FGA', 'PCT_FG3M', 'PCT_FG3A', 'PCT_FTM', 'PCT_FTA', 'PCT_OREB', 'PCT_DREB', 'PCT_REB', 'PCT_AST', 'PCT_TOV', 'PCT_STL', 'PCT_BLK', 'PCT_BLKA', 'PCT_PF', 'PCT_PFD', 'PCT_PTS'], 'sqlTeamsUsage': ['GAME_ID', 'TEAM_ID', 'TEAM_NAME', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'MIN', 'USG_PCT', 'PCT_FGM', 'PCT_FGA', 'PCT_FG3M', 'PCT_FG3A', 'PCT_FTM', 'PCT_FTA', 'PCT_OREB', 'PCT_DREB', 'PCT_REB', 'PCT_AST', 'PCT_TOV', 'PCT_STL', 'PCT_BLK', 'PCT_BLKA', 'PCT_PF', 'PCT_PFD', 'PCT_PTS']}
+    expected_data = {'PlayerStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personId', 'firstName', 'familyName', 'nameI', 'playerSlug', 'position', 'comment', 'jerseyNum', 'minutes', 'usagePercentage', 'percentageFieldGoalsMade', 'percentageFieldGoalsAttempted', 'percentageThreePointersMade', 'percentageThreePointersAttempted', 'percentageFreeThrowsMade', 'percentageFreeThrowsAttempted', 'percentageReboundsOffensive', 'percentageReboundsDefensive', 'percentageReboundsTotal', 'percentageAssists', 'percentageTurnovers', 'percentageSteals', 'percentageBlocks', 'percentageBlocksAllowed', 'percentagePersonalFouls', 'percentagePersonalFoulsDrawn', 'percentagePoints'], 'TeamStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'minutes', 'usagePercentage', 'percentageFieldGoalsMade', 'percentageFieldGoalsAttempted', 'percentageThreePointersMade', 'percentageThreePointersAttempted', 'percentageFreeThrowsMade', 'percentageFreeThrowsAttempted', 'percentageReboundsOffensive', 'percentageReboundsDefensive', 'percentageReboundsTotal', 'percentageAssists', 'percentageTurnovers', 'percentageSteals', 'percentageBlocks', 'percentageBlocksAllowed', 'percentagePersonalFouls', 'percentagePersonalFoulsDrawn', 'percentagePoints']}
 
     nba_response = None
     data_sets = None
@@ -52,5 +52,5 @@ class BoxScoreUsageV3(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets(self.endpoint)
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-        self.sql_players_usage = Endpoint.DataSet(data=data_sets['PlayerStats'])
-        self.sql_teams_usage = Endpoint.DataSet(data=data_sets['TeamStats'])
+        self.player_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+        self.team_stats = Endpoint.DataSet(data=data_sets['TeamStats'])

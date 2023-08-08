@@ -5,7 +5,7 @@ from nba_apiv3.stats.library.parameters import EndPeriod, EndRange, RangeType, S
 
 class BoxScoreFourFactorsV3(Endpoint):
     endpoint = 'boxscorefourfactorsv3'
-    expected_data = {'sqlPlayersFourFactors': ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MIN', 'EFG_PCT', 'FTA_RATE', 'TM_TOV_PCT', 'OREB_PCT', 'OPP_EFG_PCT', 'OPP_FTA_RATE', 'OPP_TOV_PCT', 'OPP_OREB_PCT'], 'sqlTeamsFourFactors': ['GAME_ID', 'TEAM_ID', 'TEAM_NAME', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'MIN', 'EFG_PCT', 'FTA_RATE', 'TM_TOV_PCT', 'OREB_PCT', 'OPP_EFG_PCT', 'OPP_FTA_RATE', 'OPP_TOV_PCT', 'OPP_OREB_PCT']}
+    expected_data = {'PlayerStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personId', 'firstName', 'familyName', 'nameI', 'playerSlug', 'position', 'comment', 'jerseyNum', 'minutes', 'effectiveFieldGoalPercentage', 'freeThrowAttemptRate', 'teamTurnoverPercentage', 'offensiveReboundPercentage', 'oppEffectiveFieldGoalPercentage', 'oppFreeThrowAttemptRate', 'oppTeamTurnoverPercentage', 'oppOffensiveReboundPercentage'], 'TeamStats': ['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'minutes', 'effectiveFieldGoalPercentage', 'freeThrowAttemptRate', 'teamTurnoverPercentage', 'offensiveReboundPercentage', 'oppEffectiveFieldGoalPercentage', 'oppFreeThrowAttemptRate', 'oppTeamTurnoverPercentage', 'oppOffensiveReboundPercentage']}
 
     nba_response = None
     data_sets = None
@@ -52,5 +52,5 @@ class BoxScoreFourFactorsV3(Endpoint):
     def load_response(self):
         data_sets = self.nba_response.get_data_sets(self.endpoint)
         self.data_sets = [Endpoint.DataSet(data=data_set) for data_set_name, data_set in data_sets.items()]
-        self.sql_players_four_factors = Endpoint.DataSet(data=data_sets['PlayerStats'])
-        self.sql_teams_four_factors = Endpoint.DataSet(data=data_sets['TeamStats'])
+        self.player_stats = Endpoint.DataSet(data=data_sets['PlayerStats'])
+        self.team_stats = Endpoint.DataSet(data=data_sets['TeamStats'])
