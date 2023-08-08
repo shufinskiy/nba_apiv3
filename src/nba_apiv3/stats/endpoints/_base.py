@@ -48,7 +48,6 @@ class Endpoint:
 
     def get_available_data(self):
         pass
-        # return self.get_normalized_dict().keys()
 
     def get_response(self):
         return self.nba_response.get_response()

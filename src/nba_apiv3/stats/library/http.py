@@ -46,7 +46,6 @@ class NBAStatsParser:
 
 class NBAStatsResponse(http.NBAResponse):
 
-
     def __init__(self, response, status_code, url):
         super().__init__(response, status_code, url)
         self.parser = NBAStatsParser(nba_dict=self.get_dict())
