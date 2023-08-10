@@ -103,9 +103,10 @@ class NBAStatsBoxscoreTraditionalParserV3(NBAStatsBoxscoreParserV3):
         results = {'PlayerStats': None, 'TeamStarterBenchStats': None, 'TeamStats': None}
         team_head = [x for x in self.get_team_headers() if x not in ('starters', 'bench')]
         player_head = [x for x in self.get_players_headers() if x not in ('starters', 'bench')]
-        start_bench_head = [x for x in self.get_start_bench_headers() if x not in ('starters', 'bench', 'plusMinusPoints')]
-        team_data = [[y for y in x if not isinstance(y, dict)] for x in self.get_team_data() ]
-        pl_data = [[y for y in x if not isinstance(y, dict)] for x in self.get_player_data() ]
+        start_bench_head = [x for x in self.get_start_bench_headers() if x not in ('starters', 'bench',
+                                                                                   'plusMinusPoints')]
+        team_data = [[y for y in x if not isinstance(y, dict)] for x in self.get_team_data()]
+        pl_data = [[y for y in x if not isinstance(y, dict)] for x in self.get_player_data()]
         start_bench_data = self.get_start_bench_data()
         results['TeamStats'] = {'headers': team_head, 'data': team_data}
         results['PlayerStats'] = {'headers': player_head, 'data': pl_data}
@@ -113,7 +114,7 @@ class NBAStatsBoxscoreTraditionalParserV3(NBAStatsBoxscoreParserV3):
         return results
 
 
-class NBAStatsBoxscoreMatchupsParserV3(NBAStatsBoxscoreParserV3):
+class NBAStatsBoxscoreMatchupsParserV3:
 
     def __init__(self, nba_dict):
         self.nba_dict = nba_dict
@@ -142,7 +143,7 @@ class NBAStatsBoxscoreMatchupsParserV3(NBAStatsBoxscoreParserV3):
 
     def get_player_data(self):
         tmp = self.nba_dict[list(self.nba_dict.keys())[1]]
-        l = []
+        pl_data = []
         for team in ['homeTeam', 'awayTeam']:
             team_info = [tmp['gameId']] + [value for key, value in tmp[team].items() if key != 'players']
             for i, def_pl in enumerate(tmp[team]['players']):
@@ -151,12 +152,48 @@ class NBAStatsBoxscoreMatchupsParserV3(NBAStatsBoxscoreParserV3):
                     off_data = [value for key, value in tmp[team]['players'][i]['matchups'][j].items() if
                                 key != 'statistics']
                     off_stats = list(tmp[team]['players'][i]['matchups'][j]['statistics'].values())
-                    l.append(team_info + def_data + off_data + off_stats)
-        return l
+                    pl_data.append(team_info + def_data + off_data + off_stats)
+        return pl_data
 
     def get_data_sets(self):
         results = {'PlayerStats': None}
         player_head = self.get_players_headers()
         pl_data = self.get_player_data()
         results['PlayerStats'] = {'headers': player_head, 'data': pl_data}
+        return results
+
+
+class NBAStatsPlayByPlayParserV3:
+
+    def __init__(self, nba_dict):
+        self.nba_dict = nba_dict
+
+    def get_playbyplay_headers(self, headers=tuple(), level=0):
+        if level == 0:
+            tmp = self.nba_dict[list(self.nba_dict.keys())[1]]
+            headers = headers + tuple([header for header in tmp.keys() if header == 'gameId'])
+            return self.get_playbyplay_headers(headers, level=1)
+        else:
+            tmp = self.nba_dict[list(self.nba_dict.keys())[1]]['actions'][0]
+            headers = headers + tuple([header for header in tmp.keys()])
+            return headers
+
+    def get_playbyplay_data(self):
+        return [[self.nba_dict['game']['gameId']] + list(x.values()) for x in self.nba_dict['game']['actions']]
+
+    def get_videoavailable_headers(self):
+        return 'videoAvailable'
+
+    def get_videoavailable_data(self):
+        return self.nba_dict[list(self.nba_dict.keys())[1]]['videoAvailable']
+
+    def get_data_sets(self):
+        results = {'PlayByPlay': None, 'AvailableVideo': None}
+        video_head = self.get_videoavailable_headers()
+        pbp_head = self.get_playbyplay_headers()
+
+        pbp_data = self.get_playbyplay_data()
+        video_data = self.get_videoavailable_data()
+        results['PlayByPlay'] = {'headers': pbp_head, 'data': pbp_data}
+        results['AvailableVideo'] = {'headers': [video_head], 'data': [[video_data]]}
         return results

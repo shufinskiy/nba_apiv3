@@ -11,7 +11,7 @@ __all__ = [
     'boxscoreusagev3',
     'boxscorehustlev2',
     'playbyplay',
-    'playbyplayv2',
+    'playbyplayv3',
     'scoreboard',
     'scoreboardv2'
 ]
@@ -28,6 +28,6 @@ from .boxscoretraditionalv3 import BoxScoreTraditionalV3
 from .boxscoreusagev3 import BoxScoreUsageV3
 from .boxscorehustlev2 import BoxScoreHustleV2
 from .playbyplay import PlayByPlay
-from .playbyplayv2 import PlayByPlayV2
+from .playbyplayv3 import PlayByPlayV3
 from .scoreboard import Scoreboard
 from .scoreboardv2 import ScoreboardV2

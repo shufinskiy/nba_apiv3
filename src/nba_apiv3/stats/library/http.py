@@ -2,7 +2,8 @@ import json
 from nba_apiv3.library import http
 from nba_apiv3.stats.library.parser import (NBAStatsBoxscoreParserV3,
                                             NBAStatsBoxscoreTraditionalParserV3,
-                                            NBAStatsBoxscoreMatchupsParserV3)
+                                            NBAStatsBoxscoreMatchupsParserV3,
+                                            NBAStatsPlayByPlayParserV3)
 
 PARSER_DICT = {
     'boxscoreadvancedv3': NBAStatsBoxscoreParserV3,
@@ -14,7 +15,8 @@ PARSER_DICT = {
     'boxscoreplayertrackv3': NBAStatsBoxscoreParserV3,
     'boxscorescoringv3': NBAStatsBoxscoreParserV3,
     'boxscoretraditionalv3': NBAStatsBoxscoreTraditionalParserV3,
-    'boxscoreusagev3': NBAStatsBoxscoreParserV3
+    'boxscoreusagev3': NBAStatsBoxscoreParserV3,
+    'playbyplayv3': NBAStatsPlayByPlayParserV3
 }
 
 try:
