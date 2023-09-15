@@ -9,7 +9,7 @@
 
 `nba_apiv3` is an API Client for `www.nba.com`. This package intends to make the APIs of [NBA.com](https://www.nba.com/) easily accessible and provide extensive documentation about them.
 
-`nba_apiv3` is fork `nba_api` package and contains only endpoints that work with API version 3.
+`nba_apiv3` is fork `nba_api` [package](https://github.com/swar/nba_api) and contains only endpoints that work with API version 3.
 
 `nba_apiv3` contains two endpoints, which not work in `nba_api`:
   - [BoxScoreDefensiveV2](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/endpoints/boxscoredefensivev2.md)
