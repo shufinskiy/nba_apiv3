@@ -1,21 +1,21 @@
-# BoxScoreMatchups
-##### [nba_api/stats/endpoints/boxscorematchups.py](https://github.com/swar/nba_api/blob/master/src/nba_api/stats/endpoints/boxscorematchups.py)
+# BoxScoreMatchupsV3
+##### [nba_apiv3/stats/endpoints/boxscorematchupsv3.py](https://github.com/swar/nba_api/blob/master/src/nba_api/stats/endpoints/boxscorematchupsv3.py)
 
 ##### Endpoint URL
->[https://stats.nba.com/stats/boxscorematchups](https://stats.nba.com/stats/boxscorematchups)
+>[https://stats.nba.com/stats/boxscorematchupsv3](https://stats.nba.com/stats/boxscorematchupsv3)
 
 ##### Valid URL
->[https://stats.nba.com/stats/boxscorematchups?GameID=0021700807](https://stats.nba.com/stats/boxscorematchups?GameID=0021700807)
+>[https://stats.nba.com/stats/boxscorematchupsv3?GameID=0021700807](https://stats.nba.com/stats/boxscorematchupsv3?GameID=0021700807)
 
 ## Parameters
-API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
------------- | ------------ | :-----------: | :---: | :---:
-[_**GameID**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id | `^\d{10}$` | `Y` |  | 
+| API Parameter Name                                                                                                  | Python Parameter Variable |  Pattern   | Required | Nullable |
+|---------------------------------------------------------------------------------------------------------------------|---------------------------|:----------:|:--------:|:--------:|
+| [_**GameID**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id                   | `^\d{10}$` |   `Y`    |          | 
 
 ## Data Sets
-#### PlayerMatchupsStats `player_matchups_stats`
+#### PlayerStats `player_stats`
 ```text
-['GAME_ID', 'OFF_TEAM_ID', 'OFF_TEAM_ABBREVIATION', 'OFF_TEAM_CITY', 'OFF_TEAM_NICKNAME', 'OFF_PLAYER_ID', 'OFF_PLAYER_NAME', 'DEF_TEAM_ID', 'DEF_TEAM_ABBREVIATION', 'DEF_TEAM_CITY', 'DEF_TEAM_NICKNAME', 'DEF_PLAYER_ID', 'DEF_PLAYER_NAME', 'MATCHUP_MIN', 'PARTIAL_POSS', 'PCT_DEFENDER_TOTAL_TIME', 'PCT_OFF_TOTAL_TIME', 'PCT_TOTAL_TIME_BOTH_ON', 'SWITCHES_ON', 'PLAYER_PTS', 'TEAM_PTS', 'MATCHUP_AST', 'MATCHUP_POTENTIAL_AST', 'MATCHUP_TOV', 'MATCHUP_BLK', 'MATCHUP_FGM', 'MATCHUP_FGA', 'MATCHUP_FG_PCT', 'MATCHUP_FG3M', 'MATCHUP_FG3A', 'MATCHUP_FG3_PCT', 'HELP_BLK', 'HELP_FGM', 'HELP_FGA', 'HELP_FG_PERC', 'MATCHUP_FTM', 'MATCHUP_FTA', 'SFL']
+['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personIdDef', 'firstNameDef', 'familyNameDef', 'nameIDef', 'playerSlugDef', 'positionDef', 'commentDef', 'jerseyNumDef', 'personIdOff', 'firstNameOff', 'familyNameOff', 'nameIOff', 'playerSlugOff', 'jerseyNumOff', 'matchupMinutes', 'matchupMinutesSort', 'partialPossessions', 'percentageDefenderTotalTime', 'percentageOffensiveTotalTime', 'percentageTotalTimeBothOn', 'switchesOn', 'playerPoints', 'teamPoints', 'matchupAssists', 'matchupPotentialAssists', 'matchupTurnovers', 'matchupBlocks', 'matchupFieldGoalsMade', 'matchupFieldGoalsAttempted', 'matchupFieldGoalsPercentage', 'matchupThreePointersMade', 'matchupThreePointersAttempted', 'matchupThreePointersPercentage', 'helpBlocks', 'helpFieldGoalsMade', 'helpFieldGoalsAttempted', 'helpFieldGoalsPercentage', 'matchupFreeThrowsMade', 'matchupFreeThrowsAttempted', 'shootingFouls']
 ```
 
 
@@ -23,49 +23,57 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 ```json
 {
     "data_sets": {
-        "PlayerMatchupsStats": [
-            "GAME_ID",
-            "OFF_TEAM_ID",
-            "OFF_TEAM_ABBREVIATION",
-            "OFF_TEAM_CITY",
-            "OFF_TEAM_NICKNAME",
-            "OFF_PLAYER_ID",
-            "OFF_PLAYER_NAME",
-            "DEF_TEAM_ID",
-            "DEF_TEAM_ABBREVIATION",
-            "DEF_TEAM_CITY",
-            "DEF_TEAM_NICKNAME",
-            "DEF_PLAYER_ID",
-            "DEF_PLAYER_NAME",
-            "MATCHUP_MIN",
-            "PARTIAL_POSS",
-            "PCT_DEFENDER_TOTAL_TIME",
-            "PCT_OFF_TOTAL_TIME",
-            "PCT_TOTAL_TIME_BOTH_ON",
-            "SWITCHES_ON",
-            "PLAYER_PTS",
-            "TEAM_PTS",
-            "MATCHUP_AST",
-            "MATCHUP_POTENTIAL_AST",
-            "MATCHUP_TOV",
-            "MATCHUP_BLK",
-            "MATCHUP_FGM",
-            "MATCHUP_FGA",
-            "MATCHUP_FG_PCT",
-            "MATCHUP_FG3M",
-            "MATCHUP_FG3A",
-            "MATCHUP_FG3_PCT",
-            "HELP_BLK",
-            "HELP_FGM",
-            "HELP_FGA",
-            "HELP_FG_PERC",
-            "MATCHUP_FTM",
-            "MATCHUP_FTA",
-            "SFL"
+        "PlayerStats": [
+            'gameId', 
+            'teamId',
+            'teamCity',
+            'teamName',
+            'teamTricode',
+            'teamSlug',
+            'personIdDef',
+            'firstNameDef',
+            'familyNameDef',
+            'nameIDef',
+            'playerSlugDef',
+            'positionDef',
+            'commentDef',
+            'jerseyNumDef',
+            'personIdOff',
+            'firstNameOff',
+            'familyNameOff',
+            'nameIOff',
+            'playerSlugOff',
+            'jerseyNumOff',
+            'matchupMinutes',
+            'matchupMinutesSort',
+            'partialPossessions',
+            'percentageDefenderTotalTime',
+            'percentageOffensiveTotalTime',
+            'percentageTotalTimeBothOn',
+            'switchesOn',
+            'playerPoints',
+            'teamPoints',
+            'matchupAssists',
+            'matchupPotentialAssists',
+            'matchupTurnovers',
+            'matchupBlocks',
+            'matchupFieldGoalsMade',
+            'matchupFieldGoalsAttempted',
+            'matchupFieldGoalsPercentage',
+            'matchupThreePointersMade',
+            'matchupThreePointersAttempted',
+            'matchupThreePointersPercentage',
+            'helpBlocks',
+            'helpFieldGoalsMade',
+            'helpFieldGoalsAttempted',
+            'helpFieldGoalsPercentage',
+            'matchupFreeThrowsMade',
+            'matchupFreeThrowsAttempted',
+            'shootingFouls'
         ]
     },
-    "endpoint": "BoxScoreMatchups",
-    "last_validated_date": "2020-08-15",
+    "endpoint": "BoxScoreMatchupsV3",
+    "last_validated_date": "2023-09-14",
     "nullable_parameters": [],
     "parameter_patterns": {
         "GameID": "^\\d{10}$"
@@ -80,4 +88,4 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 }
 ```
 
-Last validated 2020-08-16
+Last validated 2023-09-14

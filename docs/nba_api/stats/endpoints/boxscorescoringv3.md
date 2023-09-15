@@ -1,29 +1,29 @@
-# BoxScoreScoringV2
-##### [nba_api/stats/endpoints/boxscorescoringv2.py](https://github.com/swar/nba_api/blob/master/nba_api/stats/endpoints/boxscorescoringv2.py)
+# BoxScoreScoringV3
+##### [nba_apiv3/stats/endpoints/boxscorescoringv3.py](https://github.com/shufinskiy/nba_apiv3/blob/master/src/nba_api/stats/endpoints/boxscorescoringv3.py)
 
 ##### Endpoint URL
->[https://stats.nba.com/stats/boxscorescoringv2](https://stats.nba.com/stats/boxscorescoringv2)
+>[https://stats.nba.com/stats/boxscorescoringv3](https://stats.nba.com/stats/boxscorescoringv3)
 
 ##### Valid URL
->[https://stats.nba.com/stats/boxscorescoringv2?EndPeriod=1&EndRange=0&GameID=0021700807&RangeType=0&StartPeriod=1&StartRange=0](https://stats.nba.com/stats/boxscorescoringv2?EndPeriod=1&EndRange=0&GameID=0021700807&RangeType=0&StartPeriod=1&StartRange=0)
+>[https://stats.nba.com/stats/boxscorescoringv3?EndPeriod=1&EndRange=0&GameID=0021700807&RangeType=0&StartPeriod=1&StartRange=0](https://stats.nba.com/stats/boxscorescoringv3?EndPeriod=1&EndRange=0&GameID=0021700807&RangeType=0&StartPeriod=1&StartRange=0)
 
 ## Parameters
-API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
------------- | ------------ | :-----------: | :---: | :---:
-[_**EndPeriod**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#EndPeriod) | end_period |  | `Y` |  | 
-[_**EndRange**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#EndRange) | end_range |  | `Y` |  | 
-[_**GameID**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id | `^\d{10}$` | `Y` |  | 
-[_**RangeType**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#RangeType) | range_type |  | `Y` |  | 
-[_**StartPeriod**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#StartPeriod) | start_period |  | `Y` |  | 
-[_**StartRange**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#StartRange) | start_range |  | `Y` |  | 
+| API Parameter Name                                                                                                            | Python Parameter Variable |  Pattern   | Required | Nullable |
+|-------------------------------------------------------------------------------------------------------------------------------|---------------------------|:----------:|:--------:|:--------:|
+| [_**EndPeriod**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#EndPeriod)     | end_period                |            |   `Y`    |          | 
+| [_**EndRange**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#EndRange)       | end_range                 |            |   `Y`    |          | 
+| [_**GameID**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#GameID)           | game_id                   | `^\d{10}$` |   `Y`    |          | 
+| [_**RangeType**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#RangeType)     | range_type                |            |   `Y`    |          | 
+| [_**StartPeriod**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#StartPeriod) | start_period              |            |   `Y`    |          | 
+| [_**StartRange**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#StartRange)   | start_range               |            |   `Y`    |          | 
 
 ## Data Sets
-#### sqlPlayersScoring `sql_players_scoring`
+#### PlayerStats `player_stats`
 ```text
 ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MIN', 'PCT_FGA_2PT', 'PCT_FGA_3PT', 'PCT_PTS_2PT', 'PCT_PTS_2PT_MR', 'PCT_PTS_3PT', 'PCT_PTS_FB', 'PCT_PTS_FT', 'PCT_PTS_OFF_TOV', 'PCT_PTS_PAINT', 'PCT_AST_2PM', 'PCT_UAST_2PM', 'PCT_AST_3PM', 'PCT_UAST_3PM', 'PCT_AST_FGM', 'PCT_UAST_FGM']
 ```
 
-#### sqlTeamsScoring `sql_teams_scoring`
+#### TeamStats `team_stats`
 ```text
 ['GAME_ID', 'TEAM_ID', 'TEAM_NAME', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'MIN', 'PCT_FGA_2PT', 'PCT_FGA_3PT', 'PCT_PTS_2PT', 'PCT_PTS_2PT_MR', 'PCT_PTS_3PT', 'PCT_PTS_FB', 'PCT_PTS_FT', 'PCT_PTS_OFF_TOV', 'PCT_PTS_PAINT', 'PCT_AST_2PM', 'PCT_UAST_2PM', 'PCT_AST_3PM', 'PCT_UAST_3PM', 'PCT_AST_FGM', 'PCT_UAST_FGM']
 ```
@@ -33,58 +33,65 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 ```json
 {
     "data_sets": {
-        "sqlPlayersScoring": [
-            "GAME_ID",
-            "TEAM_ID",
-            "TEAM_ABBREVIATION",
-            "TEAM_CITY",
-            "PLAYER_ID",
-            "PLAYER_NAME",
-            "START_POSITION",
-            "COMMENT",
-            "MIN",
-            "PCT_FGA_2PT",
-            "PCT_FGA_3PT",
-            "PCT_PTS_2PT",
-            "PCT_PTS_2PT_MR",
-            "PCT_PTS_3PT",
-            "PCT_PTS_FB",
-            "PCT_PTS_FT",
-            "PCT_PTS_OFF_TOV",
-            "PCT_PTS_PAINT",
-            "PCT_AST_2PM",
-            "PCT_UAST_2PM",
-            "PCT_AST_3PM",
-            "PCT_UAST_3PM",
-            "PCT_AST_FGM",
-            "PCT_UAST_FGM"
+        "PlayerStats": [
+            "gameId",
+            "teamId",
+            "teamCity",
+            "teamName",
+            "teamTricode",
+            "teamSlug",
+            "personId",
+            "firstName",
+            "familyName",
+            "nameI",
+            "playerSlug",
+            "position",
+            "comment",
+            "jerseyNum",
+            "minutes",
+            "percentageFieldGoalsAttempted2pt",
+            "percentageFieldGoalsAttempted3pt",
+            "percentagePoints2pt",
+            "percentagePointsMidrange2pt",
+            "percentagePoints3pt",
+            "percentagePointsFastBreak",
+            "percentagePointsFreeThrow",
+            "percentagePointsOffTurnovers",
+            "percentagePointsPaint",
+            "percentageAssisted2pt",
+            "percentageUnassisted2pt",
+            "percentageAssisted3pt",
+            "percentageUnassisted3pt",
+            "percentageAssistedFGM",
+            "percentageUnassistedFGM"
         ],
-        "sqlTeamsScoring": [
-            "GAME_ID",
-            "TEAM_ID",
-            "TEAM_NAME",
-            "TEAM_ABBREVIATION",
-            "TEAM_CITY",
-            "MIN",
-            "PCT_FGA_2PT",
-            "PCT_FGA_3PT",
-            "PCT_PTS_2PT",
-            "PCT_PTS_2PT_MR",
-            "PCT_PTS_3PT",
-            "PCT_PTS_FB",
-            "PCT_PTS_FT",
-            "PCT_PTS_OFF_TOV",
-            "PCT_PTS_PAINT",
-            "PCT_AST_2PM",
-            "PCT_UAST_2PM",
-            "PCT_AST_3PM",
-            "PCT_UAST_3PM",
-            "PCT_AST_FGM",
-            "PCT_UAST_FGM"
+        "TeamStats": [
+            "gameId", 
+            "teamId", 
+            "teamCity", 
+            "teamName", 
+            "teamTricode", 
+            "teamSlug", 
+            "minutes", 
+            "percentageFieldGoalsAttempted2pt", 
+            "percentageFieldGoalsAttempted3pt",
+            "percentagePoints2pt",
+            "percentagePointsMidrange2pt",
+            "percentagePoints3pt",
+            "percentagePointsFastBreak",
+            "percentagePointsFreeThrow",
+            "percentagePointsOffTurnovers",
+            "percentagePointsPaint",
+            "percentageAssisted2pt",
+            "percentageUnassisted2pt",
+            "percentageAssisted3pt",
+            "percentageUnassisted3pt",
+            "percentageAssistedFGM",
+            "percentageUnassistedFGM"          
         ]
     },
-    "endpoint": "BoxScoreScoringV2",
-    "last_validated_date": "2020-08-15",
+    "endpoint": "BoxScoreScoringV3",
+    "last_validated_date": "2023-09-14",
     "nullable_parameters": [],
     "parameter_patterns": {
         "EndPeriod": null,
@@ -114,4 +121,4 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 }
 ```
 
-Last validated 2020-08-16
+Last validated 2023-09-14

@@ -1,26 +1,26 @@
-# BoxScoreDefensive
-##### [nba_api/stats/endpoints/boxscoredefensive.py](https://github.com/swar/nba_api/blob/master/nba_api/stats/endpoints/boxscoredefensive.py)
+# BoxScoreDefensiveV2
+##### [nba_apiv3/stats/endpoints/boxscoredefensivev2.py](https://github.com/shufinskiy/nba_apiv3/blob/master/src/nba_api/stats/endpoints/boxscoredefensivev2.py)
 
 ##### Endpoint URL
->[https://stats.nba.com/stats/boxscoredefensive](https://stats.nba.com/stats/boxscoredefensive)
+>[https://stats.nba.com/stats/boxscoredefensivev2](https://stats.nba.com/stats/boxscoredefensivev2)
 
 ##### Valid URL
->[https://stats.nba.com/stats/boxscoredefensive?GameID=0021700807](https://stats.nba.com/stats/boxscoredefensive?GameID=0021700807)
+>[https://stats.nba.com/stats/boxscoredefensivev2?GameID=0021700807](https://stats.nba.com/stats/boxscoredefensivev2?GameID=0021700807)
 
 ## Parameters
-API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
------------- | ------------ | :-----------: | :---: | :---:
-[_**GameID**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id | `^\d{10}$` | `Y` |  | 
+| API Parameter Name                                                                                          | Python Parameter Variable |  Pattern   | Required | Nullable |
+|-------------------------------------------------------------------------------------------------------------|---------------------------|:----------:|:--------:|:--------:|
+| [_**GameID**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id                   | `^\d{10}$` |   `Y`    |          | 
 
 ## Data Sets
-#### PlayerDefensiveStats `player_defensive_stats`
+#### PlayerStats `player_stats`
 ```text
-['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'TEAM_NICKNAME', 'PLAYER_ID', 'PLAYER_NAME', 'START_POSITION', 'COMMENT', 'MATCHUP_MIN', 'PARTIAL_POSS', 'SWITCHES_ON', 'PLAYER_PTS', 'DREB', 'MATCHUP_AST', 'MATCHUP_TOV', 'STL', 'BLK', 'MATCHUP_FGM', 'MATCHUP_FGA', 'MATCHUP_FG_PCT', 'MATCHUP_FG3M', 'MATCHUP_FG3A', 'MATCHUP_FG3_PCT']
+['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'personId', 'firstName', 'familyName', 'nameI', 'playerSlug', 'position', 'comment', 'jerseyNum', 'matchupMinutes', 'partialPossessions', 'switchesOn', 'playerPoints', 'defensiveRebounds', 'matchupAssists', 'matchupTurnovers', 'steals', 'blocks', 'matchupFieldGoalsMade', 'matchupFieldGoalsAttempted', 'matchupFieldGoalPercentage', 'matchupThreePointersMade', 'matchupThreePointersAttempted', 'matchupThreePointerPercentage']
 ```
 
-#### Table1 `table1`
+#### TeamStats `team_stats`
 ```text
-[':1']
+['gameId', 'teamId', 'teamCity', 'teamName', 'teamTricode', 'teamSlug', 'minutes']
 ```
 
 
@@ -28,38 +28,49 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 ```json
 {
     "data_sets": {
-        "PlayerDefensiveStats": [
-            "GAME_ID",
-            "TEAM_ID",
-            "TEAM_ABBREVIATION",
-            "TEAM_CITY",
-            "TEAM_NICKNAME",
-            "PLAYER_ID",
-            "PLAYER_NAME",
-            "START_POSITION",
-            "COMMENT",
-            "MATCHUP_MIN",
-            "PARTIAL_POSS",
-            "SWITCHES_ON",
-            "PLAYER_PTS",
-            "DREB",
-            "MATCHUP_AST",
-            "MATCHUP_TOV",
-            "STL",
-            "BLK",
-            "MATCHUP_FGM",
-            "MATCHUP_FGA",
-            "MATCHUP_FG_PCT",
-            "MATCHUP_FG3M",
-            "MATCHUP_FG3A",
-            "MATCHUP_FG3_PCT"
+        "PlayerStats": [
+            "gameId", 
+            "teamId", 
+            "teamCity", 
+            "teamName", 
+            "teamTricode", 
+            "teamSlug", 
+            "personId", 
+            "firstName", 
+            "familyName", 
+            "nameI", 
+            "playerSlug", 
+            "position", 
+            "comment", 
+            "jerseyNum", 
+            "matchupMinutes", 
+            "partialPossessions", 
+            "switchesOn", 
+            "playerPoints", 
+            "defensiveRebounds", 
+            "matchupAssists", 
+            "matchupTurnovers", 
+            "steals", 
+            "blocks", 
+            "matchupFieldGoalsMade", 
+            "matchupFieldGoalsAttempted", 
+            "matchupFieldGoalPercentage", 
+            "matchupThreePointersMade", 
+            "matchupThreePointersAttempted", 
+            "matchupThreePointerPercentage"
         ],
-        "Table1": [
-            ":1"
+        "TeamStats": [
+            "gameId", 
+            "teamId", 
+            "teamCity", 
+            "teamName", 
+            "teamTricode", 
+            "teamSlug", 
+            "minutes"
         ]
     },
-    "endpoint": "BoxScoreDefensive",
-    "last_validated_date": "2020-08-15",
+    "endpoint": "BoxScoreDefensiveV2",
+    "last_validated_date": "2023-09-14",
     "nullable_parameters": [],
     "parameter_patterns": {
         "GameID": "^\\d{10}$"
@@ -74,4 +85,4 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 }
 ```
 
-Last validated 2020-08-16
+Last validated 2023-09-14

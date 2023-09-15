@@ -1,28 +1,28 @@
-# PlayByPlayV2
-##### [nba_api/stats/endpoints/playbyplayv2.py](https://github.com/swar/nba_api/blob/master/nba_api/stats/endpoints/playbyplayv2.py)
+# PlayByPlayV3
+##### [nba_apiv3/stats/endpoints/playbyplayv3.py](https://github.com/shufinskiy/nba_apiv3/blob/master/src/nba_api/stats/endpoints/playbyplayv3.py)
 
 ##### Endpoint URL
->[https://stats.nba.com/stats/playbyplayv2](https://stats.nba.com/stats/playbyplayv2)
+>[https://stats.nba.com/stats/playbyplayv3](https://stats.nba.com/stats/playbyplayv3)
 
 ##### Valid URL
->[https://stats.nba.com/stats/playbyplayv2?EndPeriod=1&GameID=0021700807&StartPeriod=1](https://stats.nba.com/stats/playbyplayv2?EndPeriod=1&GameID=0021700807&StartPeriod=1)
+>[https://stats.nba.com/stats/playbyplayv3?EndPeriod=1&GameID=0021700807&StartPeriod=1](https://stats.nba.com/stats/playbyplayv3?EndPeriod=1&GameID=0021700807&StartPeriod=1)
 
 ## Parameters
-API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
------------- | ------------ | :-----------: | :---: | :---:
-[_**EndPeriod**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#EndPeriod) | end_period |  | `Y` |  | 
-[_**GameID**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#GameID) | game_id | `^\d{10}$` | `Y` |  | 
-[_**StartPeriod**_](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/library/parameters.md#StartPeriod) | start_period |  | `Y` |  | 
+| API Parameter Name                                                                                                            | Python Parameter Variable |  Pattern   | Required | Nullable |
+|-------------------------------------------------------------------------------------------------------------------------------|---------------------------|:----------:|:--------:|:--------:|
+| [_**EndPeriod**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#EndPeriod)     | end_period                |            |   `Y`    |          | 
+| [_**GameID**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#GameID)           | game_id                   | `^\d{10}$` |   `Y`    |          | 
+| [_**StartPeriod**_](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/library/parameters.md#StartPeriod) | start_period              |            |   `Y`    |          | 
 
 ## Data Sets
 #### AvailableVideo `available_video`
 ```text
-['VIDEO_AVAILABLE_FLAG']
+['videoAvailable']
 ```
 
 #### PlayByPlay `play_by_play`
 ```text
-['GAME_ID', 'EVENTNUM', 'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE', 'PERIOD', 'WCTIMESTRING', 'PCTIMESTRING', 'HOMEDESCRIPTION', 'NEUTRALDESCRIPTION', 'VISITORDESCRIPTION', 'SCORE', 'SCOREMARGIN', 'PERSON1TYPE', 'PLAYER1_ID', 'PLAYER1_NAME', 'PLAYER1_TEAM_ID', 'PLAYER1_TEAM_CITY', 'PLAYER1_TEAM_NICKNAME', 'PLAYER1_TEAM_ABBREVIATION', 'PERSON2TYPE', 'PLAYER2_ID', 'PLAYER2_NAME', 'PLAYER2_TEAM_ID', 'PLAYER2_TEAM_CITY', 'PLAYER2_TEAM_NICKNAME', 'PLAYER2_TEAM_ABBREVIATION', 'PERSON3TYPE', 'PLAYER3_ID', 'PLAYER3_NAME', 'PLAYER3_TEAM_ID', 'PLAYER3_TEAM_CITY', 'PLAYER3_TEAM_NICKNAME', 'PLAYER3_TEAM_ABBREVIATION', 'VIDEO_AVAILABLE_FLAG']
+['gameId', 'actionNumber', 'clock', 'period', 'teamId', 'teamTricode', 'personId', 'playerName', 'playerNameI', 'xLegacy', 'yLegacy', 'shotDistance', 'shotResult', 'isFieldGoal', 'scoreHome', 'scoreAway', 'pointsTotal', 'location', 'description', 'actionType', 'subType', 'videoAvailable', 'actionId']
 ```
 
 
@@ -31,47 +31,36 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 {
     "data_sets": {
         "AvailableVideo": [
-            "VIDEO_AVAILABLE_FLAG"
+            "videoAvailable"
         ],
         "PlayByPlay": [
-            "GAME_ID",
-            "EVENTNUM",
-            "EVENTMSGTYPE",
-            "EVENTMSGACTIONTYPE",
-            "PERIOD",
-            "WCTIMESTRING",
-            "PCTIMESTRING",
-            "HOMEDESCRIPTION",
-            "NEUTRALDESCRIPTION",
-            "VISITORDESCRIPTION",
-            "SCORE",
-            "SCOREMARGIN",
-            "PERSON1TYPE",
-            "PLAYER1_ID",
-            "PLAYER1_NAME",
-            "PLAYER1_TEAM_ID",
-            "PLAYER1_TEAM_CITY",
-            "PLAYER1_TEAM_NICKNAME",
-            "PLAYER1_TEAM_ABBREVIATION",
-            "PERSON2TYPE",
-            "PLAYER2_ID",
-            "PLAYER2_NAME",
-            "PLAYER2_TEAM_ID",
-            "PLAYER2_TEAM_CITY",
-            "PLAYER2_TEAM_NICKNAME",
-            "PLAYER2_TEAM_ABBREVIATION",
-            "PERSON3TYPE",
-            "PLAYER3_ID",
-            "PLAYER3_NAME",
-            "PLAYER3_TEAM_ID",
-            "PLAYER3_TEAM_CITY",
-            "PLAYER3_TEAM_NICKNAME",
-            "PLAYER3_TEAM_ABBREVIATION",
-            "VIDEO_AVAILABLE_FLAG"
+            "gameId", 
+            "actionNumber", 
+            "clock",
+            "period",
+            "teamId",
+            "teamTricode",
+            "personId",
+            "playerName",
+            "playerNameI",
+            "xLegacy",
+            "yLegacy",
+            "shotDistance",
+            "shotResult",
+            "isFieldGoal",
+            "scoreHome",
+            "scoreAway",
+            "pointsTotal", 
+            "location",
+            "description",
+            "actionType",
+            "subType",
+            "videoAvailable",
+            "actionId"
         ]
     },
-    "endpoint": "PlayByPlayV2",
-    "last_validated_date": "2020-08-15",
+    "endpoint": "PlayByPlayV3",
+    "last_validated_date": "2023-09-14",
     "nullable_parameters": [],
     "parameter_patterns": {
         "EndPeriod": null,
@@ -92,4 +81,4 @@ API Parameter Name | Python Parameter Variable | Pattern | Required | Nullable
 }
 ```
 
-Last validated 2020-08-16
+Last validated 2023-09-14
