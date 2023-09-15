@@ -75,8 +75,6 @@ GitHub allows developers the ability to draft pull requestes. This is incredibly
 
 ### Python Supported Versions
 
-Supported versions can be found within the [build script](https://github.com/swar/nba_api/blob/master/.circleci/config.yml).
-
 While `nba_apiv3` makes every attempt to provide compatibility with [Supported Versions of Python](https://devguide.python.org/versions/), libraries that the `nba_apiv3` depends on may not offer that same compatibility. Should this occur, the `nba_api` will support the next Supported Version of Python in which all libraries share mutual compatibility.
 
 ### Poetry
