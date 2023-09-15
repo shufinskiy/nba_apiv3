@@ -37,7 +37,7 @@ matchups.get_data_frames()[0]
 
 # Documentation
 
-- [Endpoints](/docs/nba_apiv3/stats/endpoints)
+- [Endpoints](/docs/nba_api/stats/endpoints)
 
 # Contributing
 
