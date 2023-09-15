@@ -1,11 +1,11 @@
 import pytest
 import datetime
 import time
-from nba_api.stats.endpoints import Scoreboard
-from nba_api.stats.endpoints import PlayByPlay
-from nba_api.stats.library.parameters import LeagueID
-from nba_api.stats.library.eventmsgtype import EventMsgType
-from nba_api.stats.library.playbyplayregex import eventmsgtype_to_re
+from nba_apiv3.stats.endpoints import Scoreboard
+from nba_apiv3.stats.endpoints import PlayByPlay
+from nba_apiv3.stats.library.parameters import LeagueID
+from nba_apiv3.stats.library.eventmsgtype import EventMsgType
+from nba_apiv3.stats.library.playbyplayregex import eventmsgtype_to_re
 
 
 def pytest_generate_tests(metafunc):

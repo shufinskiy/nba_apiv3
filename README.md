@@ -1,103 +1,57 @@
-[![Version: PyPI](https://img.shields.io/pypi/v/nba_api.svg?longCache=true&style=for-the-badge&logo=pypi)](https://pypi.python.org/pypi/nba_api)
-[![Downloads per Month: PyPY](https://img.shields.io/pypi/dm/nba_api.svg?style=for-the-badge)](https://pepy.tech/project/nba-api)
-[![Build: CircleCI](https://img.shields.io/circleci/project/github/swar/nba_api.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/swar/nba_api)
-[![License: MIT](https://img.shields.io/github/license/swar/nba_api.svg?style=for-the-badge)](https://github.com/swar/nba_api/blob/master/LICENSE)
-[![Slack](https://img.shields.io/badge/Slack-NBA_API-4A154B?style=for-the-badge&logo=slack)](https://join.slack.com/t/nbaapi/shared_invite/zt-1ipsuai9j-GjZjuP9S2~Uczuny1t74zA)
+[![PyPI](https://img.shields.io/pypi/v/nba_apiv3)](https://pypi.python.org/pypi/nba_apiv3)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/shufinskiy/nba_apiv3/blob/master/LICENSE)
+[![Downloads](https://static.pepy.tech/badge/nba_apiv3)](https://pepy.tech/project/nba_apiv3)
+[![Telegram](https://img.shields.io/badge/telegram-write%20me-blue.svg)](https://t.me/brains14482)
 
-# nba_api
+# nba_apiv3
 
-## An API Client Package to Access the APIs of NBA.com
+## An API Client package to access the APIs version 3 for NBA.com
 
-`nba_api` is an API Client for `www.nba.com`. This package intends to make the APIs of [NBA.com](https://www.nba.com/) easily accessible and provide extensive documentation about them.
+`nba_apiv3` is an API Client for `www.nba.com`. This package intends to make the APIs of [NBA.com](https://www.nba.com/) easily accessible and provide extensive documentation about them.
+
+`nba_apiv3` is fork `nba_api` package and contains only endpoints that work with API version 3.
+
+`nba_apiv3` contains two endpoints, which not work in `nba_api`:
+  - [BoxScoreDefensiveV2](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/endpoints/boxscoredefensivev2.md)
+  - [BoxScoreMatchupsV3](https://github.com/shufinskiy/nba_apiv3/blob/master/docs/nba_api/stats/endpoints/boxscorematchupsv3.md)
 
 # Getting Started
 
-`nba_api` requires Python 3.7+ along with the `requests` and `numpy` packages. While `pandas` is not required, it is required to work with Pandas DataFrames.
+`nba_apiv3` requires Python 3.7+ along with the `requests` and `numpy` packages. While `pandas` is not required, it is required to work with Pandas DataFrames.
 
 ```bash
-pip install nba_api
+pip install nba_apiv3
 ```
 
-## NBA Official Stats
+## NBA 
 
 ```python
-from nba_api.stats.endpoints import playercareerstats
+from nba_apiv3.stats.endpoints import boxscorematchupsv3
 
-# Nikola Jokić
-career = playercareerstats.PlayerCareerStats(player_id='203999') 
+matchups = boxscorematchupsv3.BoxScoreMatchupsV3(game_id='0021700807')
 
-# pandas data frames (optional: pip install pandas)
-career.get_data_frames()[0]
-
-# json
-career.get_json()
-
-# dictionary
-career.get_dict()
+## players stats
+matchups.get_data_frames()[0]
 ```
 
-## NBA Live Data
-
-```python
-from nba_api.live.nba.endpoints import scoreboard
-
-# Today's Score Board
-games = scoreboard.ScoreBoard()
-
-# json
-games.get_json()
-
-# dictionary
-games.get_dict()
-```
-
-## Additional Examples
-
-- [Requests/Response Options](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/examples.md#endpoint-usage-example)
-  - Proxy Support, Custom Headers, and Timeout Settings
-  - Return Types and Raw Responses
-- [Static Data Sets](https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/examples.md#static-usage-examples)
-  - Reduce HTTP requests for common and frequently accessed player and team data.
-- [Jupyter Notebooks](https://github.com/swar/nba_api/tree/master/docs/examples)
-  - Practical examples in Jupyter Notebook format, including making basic calls, finding games, working with play-by-play data, and interacting with live game data.
 
 # Documentation
 
-- [Table of Contents](https://github.com/swar/nba_api/tree/master/docs/table_of_contents.md)
-- [Package Structure](https://github.com/swar/nba_api/tree/master/docs/package_structure.md)
-- [Endpoints](/docs/nba_api/stats/endpoints)
-- Static Data Sets
-  - [players.py](https://github.com/swar/nba_api/tree/master/docs/nba_api/stats/static/players.md)
-  - [teams.py](https://github.com/swar/nba_api/tree/master/docs/nba_api/stats/static/teams.md)
-
-# Join the Community
-## Slack
-
-Join [Slack](https://join.slack.com/t/nbaapi/shared_invite/zt-cayfrnfo-s9rySAmBXxBloL09S6N0KA) to get help, help others, provide feedback, see amazing projects, participates in discussions, and collaborate with others from around the world.
-
-## Stack Overflow
-
-Not a Slack fan? No problem. Head over to [StackOverflow](https://stackoverflow.com/questions/tagged/nba-api). Be sure to tag your post with `nba-api`.
+- [Endpoints](/docs/nba_apiv3/stats/endpoints)
 
 # Contributing
 
-*See [Contributing to the NBA_API](https://github.com/swar/nba_api/blob/master/CONTRIBUTING.md) for complete details.*
-
-## Endpoints
-
-A significant purpose of this package is to continuously map and analyze as many endpoints on NBA.com as possible. The documentation and analysis of the endpoints and parameters in this package are some of the most extensive information available. At the same time, NBA.com does not provide information regarding new, changed, or removed endpoints.
-
-If you find a new, changed, or deprecated endpoint, open a [GitHub Issue](https://github.com/swar/nba_api/issues)
+*See [Contributing to the NBA_APIV3](https://github.com/shufinskiy/nba_apiv3/blob/master/CONTRIBUTING.md) for complete details.*
 
 ## Bugs
 
-Encounter a bug, [report a bug](https://github.com/swar/nba_api/issues).
+Encounter a bug, [report a bug](https://github.com/shufinskiy/nba_apiv3/issues).
 
 # License & Terms of Use
 
 ## API Client Package
 
-The `nba_api` package is Open Source with an [MIT License](https://github.com/swar/nba_api/blob/master/LICENSE).
+The `nba_apiv3` package is Open Source with an [MIT License](https://github.com/shufinskiy/nba_apiv3/blob/master/LICENSE).
 
 ## NBA.com
 
