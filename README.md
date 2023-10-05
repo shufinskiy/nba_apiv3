@@ -3,6 +3,8 @@
 [![Downloads](https://static.pepy.tech/badge/nba_apiv3)](https://pepy.tech/project/nba_apiv3)
 [![Telegram](https://img.shields.io/badge/telegram-write%20me-blue.svg)](https://t.me/brains14482)
 
+# Note: Support NBA API version 3 added in `nba_api` [package](https://github.com/swar/nba_api). This package switch to public archive.
+
 # nba_apiv3
 
 ## An API Client package to access the APIs version 3 for NBA.com
